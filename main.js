@@ -26,8 +26,8 @@ $(document).ready(function () {
                     var book_summary = book_array[i].summary.label;
                     var img_tag = $('<img>');
                     var a_tag = $('<a>');
-                    var h3_tag = $('<h3>');
-                    var div_tag = $('<div>').addClass('col-md-offset-1 col-md-2');
+                    var h3_tag = $('<h3>').text(book_name);
+                    var div_tag = $('<div>').addClass('col-md-3');
                     $(a_tag).append(img_tag);
                     $(h3_tag).append(a_tag);
                     $(div_tag).append(h3_tag);
