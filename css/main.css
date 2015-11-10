@@ -1,5 +1,22 @@
 
-.page-header{
-    margin-left: 10%;
+.logo {
+    margin: 0px 30px;
+    width: 450px;
+    display: inline-block;
+}
+.twitter_feed{
+    text-align: center;
+}
+.twitter_well{
+    margin-left: 15px;
+}
+.twitter_btn{
+    background-color: aquamarine;
+    padding: 10px;
+    width: 80%;
+    border: 1px solid;
 
+}
+body{
+    overflow: hidden;
 }

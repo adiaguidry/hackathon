@@ -1,7 +1,3 @@
-var youtubeKey = 'AIzaSyA_5mwiVRZJ9ZJaituqv1ngICdL-5F17Pk';
-var youtubeResult = "";
-var videoId = [];
-
 var goodreads_key = 'key: orU88aqllNy1ZoJLTTH9Q';
 var goodreads_secret = 'secret: 3fnOGoSE7vkY8s96FFeoppDlAiHXMGanqAORgCqwU8M';
 var global_result;
@@ -67,6 +63,7 @@ $(document).ready(function () {
                 row = '.row5';
                 break;
         }
+
         $(row).empty();
         $.ajax({
             dataType: 'json',
@@ -97,9 +94,29 @@ $(document).ready(function () {
                     all_books_array.push(book);
                     console.log(all_books_array);
                 }
+
             }
         });
     });
+
+
+
+function twitterUpdate(){
+    $('.twitter_well > ul').text('');
+    apis.twitter.getData('#booknerdproblems', function(success, response){
+        if(success){
+            for(var i=0; i<response.tweets.statuses.length -12; i++){
+                var tweets = response.tweets.statuses[i].text;
+                var li = $('<li>').text(tweets).addClass("tweets");
+                $('.twitter_well > ul').append(li);
+            }
+
+        }
+    })
+}
+
+
+
 
     //=============youtube search function with button====================//
     $('#search').click(function () {
@@ -126,4 +143,5 @@ $(document).ready(function () {
 
     });
 }); //end document ready function//
+
 
