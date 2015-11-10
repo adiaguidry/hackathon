@@ -135,7 +135,7 @@ function twitterUpdate(){
             console.log('YouTube', videoId[1], '195', 320);
             setTimeout(function () {
                 apis.youtube.stopVideo()
-            }, 20000);
+            }, 200000);
 
             console.log("YouTube Failed");
         }
