@@ -3,27 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>iLike Big Brains</title>
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="http://learning-fuze.github.io/hackathon/api-obj.js"></script>
-    <script src="main.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
-<style>
-    body {
-        overflow: hidden;
-    }
-</style>
-
+    <script src="http://learning-fuze.github.io/hackathon/api-obj.js"></script>
+    <!--<script src="auth.js"></script>-->
+    <script src="main.js"></script>
+   <!-- <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script> -->
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
 
 <!-- Page Content -->
+
 <div class="container">
+
                 <span class="right">
                     <a href="http://tympanus.net/codrops/2012/06/12/css-only-responsive-layout-with-smooth-transitions/">
                         <strong>Back to the Codrops Article</strong>
@@ -90,8 +93,19 @@
 
                 <!--&lt;!&ndash; Projects Row &ndash;&gt;-->
                 <div class="row row3">
+
+                    <div id="buttons">
+                        <label> <input id="query" type="text"/><button id="search">Search</button></label>
+                    </div>
+                    <div id="search-container">
+                        <div id="player">
+
+                        </div>
+                    </div>
+
                     <!-- dynamic creation all books-->
                 </div>
+
                 <!--&lt;!&ndash; /.row &ndash;&gt;-->
             </section>
 
@@ -105,46 +119,7 @@
 
                 <!--&lt;!&ndash; Projects Row &ndash;&gt;-->
                 <div class="row row4">
-                    <!--<div class="col-md-offset-1 col-md-2">-->
-                        <!--<a href="#">-->
-                            <!--<img class="img-responsive" src="http://placehold.it/700x400" alt="">-->
-                        <!--</a>-->
-                        <!--<h3>-->
-                            <!--<a href="#">Project Name</a>-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<a href="#">-->
-                            <!--<img class="img-responsive" src="http://placehold.it/700x400" alt="">-->
-                        <!--</a>-->
-                        <!--<h3>-->
-                            <!--<a href="#">Project Name</a>-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<a href="#">-->
-                            <!--<img class="img-responsive" src="http://placehold.it/700x400" alt="">-->
-                        <!--</a>-->
-                        <!--<h3>-->
-                            <!--<a href="#">Project Name</a>-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<a href="#">-->
-                            <!--<img class="img-responsive" src="http://placehold.it/700x400" alt="">-->
-                        <!--</a>-->
-                        <!--<h3>-->
-                            <!--<a href="#">Project Name</a>-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<a href="#">-->
-                            <!--<img class="img-responsive" src="http://placehold.it/700x400" alt="">-->
-                        <!--</a>-->
-                        <!--<h3>-->
-                            <!--<a href="#">Project Name</a>-->
-                        <!--</h3>-->
-                    <!--</div>-->
+                    <!-- dynamic creation all books-->
                 </div>
                 <!--&lt;!&ndash; /.row &ndash;&gt;-->
             </section>
@@ -158,64 +133,17 @@
                 </div>
                 <!--&lt;!&ndash; Projects Row &ndash;&gt;-->
                 <div class="row row5">
-                    <!--<div class="col-md-offset-1 col-md-2">-->
-                        <!--<a href="#">-->
-                            <!--<img class="img-responsive" src="http://placehold.it/700x400" alt="">-->
-                        <!--</a>-->
-                        <!--<h3>-->
-                            <!--<a href="#">Project Name</a>-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<a href="#">-->
-                            <!--<img class="img-responsive" src="http://placehold.it/700x400" alt="">-->
-                        <!--</a>-->
-                        <!--<h3>-->
-                            <!--<a href="#">Project Name</a>-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<a href="#">-->
-                            <!--<img class="img-responsive" src="http://placehold.it/700x400" alt="">-->
-                        <!--</a>-->
-                        <!--<h3>-->
-                            <!--<a href="#">Project Name</a>-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<a href="#">-->
-                            <!--<img class="img-responsive" src="http://placehold.it/700x400" alt="">-->
-                        <!--</a>-->
-                        <!--<h3>-->
-                            <!--<a href="#">Project Name</a>-->
-                        <!--</h3>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<a href="#">-->
-                            <!--<img class="img-responsive" src="http://placehold.it/700x400" alt="">-->
-                        <!--</a>-->
-                        <!--<h3>-->
-                            <!--<a href="#">Project Name</a>-->
-                        <!--</h3>-->
-                    <!--</div>-->
+                    <!-- dynamic creation all books-->
                 </div>
                 <!--&lt;!&ndash; /.row &ndash;&gt;-->
             </section>
 
         <!--</div>&lt;!&ndash; // st-scroll &ndash;&gt;-->
-        <!-- -->
+
     </div>
-
-
-
-    <hr>
-
-
-
-
-        <!-- <a href='http://www.freepik.com/free-vector/cartoon-brain-illustrations_798005.htm'>Designed by Freepik</a> -->
-
 </div>
+
+    <!-- Page Header -->
 <!-- /.container -->
 </body>
 </html>
