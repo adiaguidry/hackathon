@@ -107,9 +107,9 @@ $(document).ready(function () {
 
         apis.youtube.getData(searchResult, '10', function (success, resp) {
             videoId = resp;
-            console.log("before success call", resp.video[1]);
+            console.log("before success call", resp.video[0]);
             if (success) {
-                apis.youtube.playVideo(resp.video[1].id, 195, 320);
+                apis.youtube.playVideo(resp.video[0].id, 195, 320);
                 console.log("success called", resp);
             }
         });
