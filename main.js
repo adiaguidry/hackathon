@@ -13,11 +13,13 @@ $(document).ready(function () {
                     var book_image = global_result.feed.entry[i]["im:image"][2].label;
                     var book_name = book_array[i]["im:name"].label;
                     var book_author = book_array[i]["im:artist"].label;
-                    $('img').attr('src',book_image);
+
+                    $('img ').attr('src',book_image);
                     $('.book_name').html(book_name);
                     $('p').html(book_author);
+                    }
                 }
-            }
+
         });
         console.log('End of click function');
 });
