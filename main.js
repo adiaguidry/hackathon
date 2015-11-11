@@ -11,6 +11,7 @@ var romance_books_array = [];
 var health_books_array = [];
 var sci_books_array = [];
 var mystery_books_array = [];
+var audio_book_array =[];
 
 var book_object = function (title, author, summary, image, myarr) {
     var self = this;
@@ -24,23 +25,49 @@ var book_object = function (title, author, summary, image, myarr) {
         return myarr.indexOf(this);
     }
 };
+var audio_book_object = function (image, link, title) {
+    var self = this;
+    this.image = image;
+    this.link = link;
+    this.title = title;
+    this.find = function () {
+        console.log(audio_book_array);
+        console.log(this.title);
+        return audio_book_array.indexOf(this);
+    }
+};
+function appendaudiobook(audiobookobj){
+    var icon_tag = $('<i>').addClass('fa fa-info fa-lg info');
+    var iframe = $('<iframe>').attr('src', audiobookobj.link);
+    var img_tag = $('<img>').attr('src', audiobookobj.image).addClass('audio_books');
+    var a_tag = $('<a>').on('click', function(){
+        $('.modal-body').text('');
+        $('#bookModal').modal('show');
+        $('.modal-body').append(iframe);
+        $('.modal-title').text(audiobookobj.title);
 
+    });
+    $(a_tag).append(icon_tag);
+    $('.audiobooks').append(img_tag, a_tag);
+}
 function appendbookobjecttoDOM(book_object, currrow) {
     var img_tag = $('<img>');
     var a_tag = $('<a>');
-    var h3_tag = $('<h3>').text(book_object.title);
+    var h5_tag = $('<h5>').text(book_object.author);
     var div_tag = $('<div>').addClass('col-md-offset-1 col-md-2');
     $(a_tag).append(img_tag);
-    $(h3_tag).append(a_tag);
-    $(div_tag).append(h3_tag);
+    $(h5_tag).append(a_tag);
+    $(div_tag).append(h5_tag);
     $(div_tag).append(a_tag);
     $(currrow).append(div_tag);
     $(img_tag).attr('src', book_object.image).click(function(){
-        youtubeSearch(book_object);
-        console.log(book_object.find());
+        youtubeSearch(book_object); 
+        $('#bookModal').modal('show');
+        $('.modal-title').text(book_object.title);
+        $('.modal-body').text(book_object.summary);
     });
     $('.book_name').html(book_object.author);
-    $('p').html(book_object.author);
+    $('p').html(book_object.summary);
     console.log(all_books_array);
 }
 function twitterUpdate() {
@@ -93,6 +120,9 @@ function anmimate_workout(){
 }
 
 $(document).ready(function () {
+    $('.shut_down').on('click',function(){
+        $('.modal-body').text('');
+    });
 
     twitterUpdate();
     anmimate_workout();
@@ -107,18 +137,19 @@ $(document).ready(function () {
             var audiobook_array = audiobook_result.feed.entry;
             for (var i = 0; i < audiobook_array.length - 2; i++) {
                 var audiobook_image = audiobook_result.feed.entry[i]["im:image"][2].label;
+                var audiobook_title = audiobook_result.feed.entry[i].title.label;
                 var audiobook_link = audiobook_result.feed.entry[i].link[1].attributes.href;
-                var audiobook_author = audiobook_array[i]["im:artist"].label;
-                //var audiobook_summary = book_array[i].summary.label;
-                var a_tag = $('<a>').attr('href', audiobook_link);
-                var icon_tag = $('<i>').addClass('fa fa-info fa-lg info');
-                var img_tag = $('<img>').attr('src', audiobook_image).addClass('audio_books');
-                $(a_tag).append(icon_tag);
-                $('.audiobooks').append(img_tag, a_tag);
+                var audio_book = new audio_book_object(audiobook_image, audiobook_link, audiobook_title);
+                audio_book_array.push(audio_book);
+
+                }
+                for(i=0;i<audio_book_array.length;i++){
+                    appendaudiobook(audio_book_array[i]);
+                }
+
                 console.log('111AJAX Success function called, audiobooks:', result, audiobook_link);
             }
-        }
-    });
+        });
 
     $.ajax({
         dataType: 'json',

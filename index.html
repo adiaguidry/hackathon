@@ -20,20 +20,27 @@
 
 <body>
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="bookModal" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <button type="button" class="close shut_down" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Book Summary</h4>
             </div>
             <div class="modal-body">
                 <p>why was this so hard!!</p>
+                <!-- Youtube player-->
+                <div id="player">
+
+                </div>
+
+                <!--end youtube player-->
+            </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default shut_down" data-dismiss="modal">Close</button>
             </div>
         </div>
 
@@ -72,20 +79,12 @@
                         <h5 class="fifth_animation_line">Ok enough song parodies, back to my brain workout!!</h5>
                         <h5 class="sixth_animation_line">#ilikebigbrains gotta update my twitter</h5>
                     </div>
-<!-- Youtube player-->
-                        <div id="player">
-
-                        </div>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-                    <!--end youtube player-->
-                    </div>
-
-                <hr>
+                <hr style="border: 1px solid black">
 
                 <div class="row">
                     <div class="col-md-2 twitter_feed">
                         <button onclick="twitterUpdate()" class="twitter_btn">#booknerd <i class="fa fa-twitter"></i></button>
-                        <h2>Tweet #ilikebigbrains</h2>
+                        <h3>Tweet #ilikebigbrains</h3>
                         <div class="twitter_well">
                             <ul>
 
@@ -97,14 +96,14 @@
 
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <h1>Audio Books</h1>
+                    <div class="col-md-2 twitter_feed">
+                        <h3>Audio Books</h3>
                         <div class="audiobooks">
                             <!-- add audio books here-->
                         </div>
                     </div>
                 </div>
-
+            </div>
             </section>
 
             <section class="st-panel st-color" id="st-panel-2">
@@ -168,7 +167,8 @@
                 </div>
                 <!--&lt;!&ndash; /.row &ndash;&gt;-->
             </section>
-
+  </div>
+</div>
 
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Page Header -->
