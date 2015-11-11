@@ -9,8 +9,9 @@ var currentarray;
 var all_books_array = [];
 var romance_books_array = [];
 var health_books_array = [];
-var positivity_books_array = [];
-var passion_books_array = [];
+var sci_books_array = [];
+var mystery_books_array = [];
+
 var book_object = function (title, author, summary, image, myarr) {
     var self = this;
     this.image = image;
@@ -35,6 +36,7 @@ function appendbookobjecttoDOM(book_object, currrow) {
     $(div_tag).append(a_tag);
     $(currrow).append(div_tag);
     $(img_tag).attr('src', book_object.image).click(function(){
+        $('#player').text('');
         youtubeSearch(book_object);
         console.log(book_object.find());
     });
@@ -44,11 +46,12 @@ function appendbookobjecttoDOM(book_object, currrow) {
 }
 function twitterUpdate() {
     $('.twitter_well > ul').text('');
-    apis.twitter.getData('#booknerdproblems', function (success, response) {
-        if (success) {
-            for (var i = 0; i < response.tweets.statuses.length - 12; i++) {
+    apis.twitter.getData('#booknerd', function(success, response){
+        if(success){
+            for(var i=0; i<response.tweets.statuses.length -12; i++){
                 var tweets = response.tweets.statuses[i].text;
                 var li = $('<li>').text(tweets).addClass("tweets");
+                console.log('twitter ', response);
                 $('.twitter_well > ul').append(li);
             }
         }
@@ -118,14 +121,14 @@ $(document).ready(function () {
                 currentarray = health_books_array;
                 break;
             case "st-control-4":
-                url = 'https://itunes.apple.com/us/rss/toppaidebooks/limit=10/genre=9028/json';
+                url = 'https://itunes.apple.com/us/rss/topfreeebooks/limit=10/genre=9020/json';
                 row = '.row4';
-                currentarray = positivity_books_array;
+                currentarray = sci_books_array;
                 break;
             case "st-control-5":
-                url = 'https://itunes.apple.com/us/rss/toppaidebooks/limit=10/genre=9028/json';
+                url = 'https://itunes.apple.com/us/rss/topfreeebooks/limit=10/genre=9032/json';
                 row = '.row5';
-                currentarray = passion_books_array;
+                currentarray = mystery_books_array;
                 break;
         }
         $.ajax({
@@ -174,6 +177,7 @@ function youtubeSearch(book_object) {
         if (success) {
             apis.youtube.playVideo(resp.video[0].id, 195, 320);
             console.log("success called", resp);
+            searchResult = '';
         }
     });
     {
