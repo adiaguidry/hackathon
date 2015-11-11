@@ -8,8 +8,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
     <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
     <script src="http://learning-fuze.github.io/hackathon/api-obj.js"></script>
     <!--<script src="auth.js"></script>-->
@@ -20,24 +20,31 @@
 
 <body>
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="bookModal" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <button type="button" class="close shut_down" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Book Summary</h4>
             </div>
             <div class="modal-body">
                 <p>why was this so hard!!</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <!-- Youtube player-->
+                <div id="player">
+
+                </div>
+
+                <!--end youtube player-->
             </div>
         </div>
-
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default shut_down" data-dismiss="modal">Close</button>
+        </div>
     </div>
+
+</div>
 </div>
 
 <div class="st-container">
@@ -53,8 +60,6 @@
     <input class='navi' type="radio" name="radio-set" id="st-control-5"/>
     <a href="#st-panel-5">Mystery</a>
 
-
-
     <div class="st-scroll">
 
         <!-- Placeholder text from http://hipsteripsum.me/ -->
@@ -63,63 +68,49 @@
             <!-- Page Header -->
             <div class="row">
                 <div class="col-lg-9">
-                    <img class="logo" src="images/logo_pic.png">
+                    <img  class="logo" src="images/logo_pic.png">
                 </div>
                 <div class="col-lg-3">
                     <img class="workout_brain" src="images/brain_workout.png">
-                    <h5 class="first_animation_line"><img
-                            src="https://pixabay.com/static/uploads/photo/2013/07/12/19/21/melody-154619_640.png"> I
-                        like big brains and I can not lie</h5>
+                    <h5 class="first_animation_line"><img src="https://pixabay.com/static/uploads/photo/2013/07/12/19/21/melody-154619_640.png"> I like big brains and I can not lie</h5>
                     <h5 class="second_animation_line">you other brains cannot deny</h5>
-                    <h5 class="third_animation_line">when a girl walks in with ittby bitty frames <img
-                            src="http://www.clker.com/cliparts/S/3/L/6/C/v/black-glasses-hi.png"></h5>
+                    <h5 class="third_animation_line">when a girl walks in with ittby bitty frames <img src="http://www.clker.com/cliparts/S/3/L/6/C/v/black-glasses-hi.png"></h5>
                     <h5 class="fourth_animation_line">and a huge book in her hand...You get sprung!</h5>
                     <h5 class="fifth_animation_line">Ok enough song parodies, back to my brain workout!!</h5>
                     <h5 class="sixth_animation_line">#ilikebigbrains gotta update my twitter</h5>
                 </div>
-                <!-- Youtube player-->
-                <!--<div id="player">-->
+                <hr style="border: 1px solid black">
 
-                <!--</div>-->
-                <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
-                <!--end youtube player-->
-            </div>
+                <div class="row">
+                    <div class="col-md-2 twitter_feed">
+                        <button onclick="twitterUpdate()" class="twitter_btn">#booknerd <i class="fa fa-twitter"></i></button>
+                        <h3>Tweet #ilikebigbrains</h3>
+                        <div class="twitter_well">
+                            <ul>
 
-            <!--<hr>-->
-
-            <div class="row">
-                <div class="col-md-2 twitter_feed">
-                    <button onclick="twitterUpdate()" class="twitter_btn">#booknerd <i class="fa fa-twitter"></i>
-                    </button>
-                    <h2>Tweet #ilikebigbrains</h2>
-
-                    <div class="twitter_well">
-                        <ul>
-
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="row1">
+                    <div class="col-md-8">
+                        <div class="row1">
 
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-2">
-                    <h1>Audio Books</h1>
-
-                    <div class="audiobooks">
-                        <!-- add audio books here-->
+                    <div class="col-md-2 twitter_feed">
+                        <h3>Audio Books</h3>
+                        <div class="audiobooks">
+                            <!-- add audio books here-->
+                        </div>
                     </div>
                 </div>
             </div>
-
         </section>
 
         <section class="st-panel st-color" id="st-panel-2">
             <!-- Page Header -->
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="sub_logo" src="images/reading_brain.png">
+                    <img  class="sub_logo" src="images/reading_brain.png">
                 </div>
             </div>
             <hr>
@@ -134,7 +125,7 @@
         <section class="st-panel" id="st-panel-3">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="sub_logo" src="images/reading_brain.png">
+                    <img  class="sub_logo" src="images/reading_brain.png">
                 </div>
             </div>
             <hr>
@@ -152,7 +143,7 @@
         <section class="st-panel st-color" id="st-panel-4">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="sub_logo" src="images/reading_brain.png">
+                    <img  class="sub_logo" src="images/reading_brain.png">
                 </div>
             </div>
             <hr>
@@ -166,7 +157,7 @@
         <section class="st-panel" id="st-panel-5">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="sub_logo" src="images/reading_brain.png">
+                    <img  class="sub_logo" src="images/reading_brain.png">
                 </div>
             </div>
             <hr>
@@ -176,10 +167,11 @@
             </div>
             <!--&lt;!&ndash; /.row &ndash;&gt;-->
         </section>
+    </div>
+</div>
 
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <!-- Page Header -->
-        <!-- /.container -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- Page Header -->
+<!-- /.container -->
 </body>
 </html>

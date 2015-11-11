@@ -27,12 +27,16 @@ body{
     overflow: hidden;
 }
 
-.col-md-2 h3 {
-    font-size: 1em;
+.col-md-2 h5 {
+    width: 175%;
+    color: white;
 }
 .audio_books{
-    width: 40%;
-    margin: 5px;
+    width: 35%;
+    margin: 4px;
+}
+.audio_books img {
+    margin: 1px;
 }
 .second_animation_line, .third_animation_line, .fourth_animation_line, .fifth_animation_line, .sixth_animation_line{
     display: none;
@@ -40,9 +44,7 @@ body{
 .first_animation_line img,.third_animation_line img{
     width: 10%;
 }
-section h3{
-    color: white;
-}
+
 
 .col-md-8, #st-panel-2, #st-panel-3, #st-panel-4, #st-panel-5{
     background-image:url('http://samandaemydesign.naruto-kun.hu/color/b1.jpg');
