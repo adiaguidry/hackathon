@@ -18,14 +18,14 @@ var book_object = function (title, author, summary, image, myarr) {
     this.title = title;
     this.author = author;
     this.summary = summary;
-    this.find = function(){
+    this.find = function () {
         console.log(myarr);
         console.log(this.title);
         return myarr.indexOf(this);
     }
 };
 
-function appendbookobjecttoDOM(book_object, currrow){
+function appendbookobjecttoDOM(book_object, currrow) {
     var img_tag = $('<img>');
     var a_tag = $('<a>');
     var h3_tag = $('<h3>').text(book_object.title);
@@ -44,7 +44,7 @@ function appendbookobjecttoDOM(book_object, currrow){
     $('p').html(book_object.author);
     console.log(all_books_array);
 }
-function twitterUpdate(){
+function twitterUpdate() {
     $('.twitter_well > ul').text('');
     apis.twitter.getData('#booknerd', function(success, response){
         if(success){
@@ -64,14 +64,14 @@ $(document).ready(function () {
         success: function (result) {
             console.log('111AJAX Success function called, with the following result:', result);
 //traverse object
-             audiobook_result = result;
+            audiobook_result = result;
             var audiobook_array = audiobook_result.feed.entry;
             for (var i = 0; i < audiobook_array.length - 2; i++) {
                 var audiobook_image = audiobook_result.feed.entry[i]["im:image"][2].label;
                 var audiobook_name = audiobook_array[i]["im:name"].label;
                 var audiobook_author = audiobook_array[i]["im:artist"].label;
                 //var audiobook_summary = book_array[i].summary.label;
-                var img_tag = $('<img>').attr('src', audiobook_image).css('width','100px');
+                var img_tag = $('<img>').attr('src', audiobook_image).css('width', '100px');
                 $('.audiobooks').append(img_tag);
             }
         }
@@ -83,7 +83,7 @@ $(document).ready(function () {
         success: function (result) {
             console.log('AJAX Success function called, with the following result:', result);
             global_result = result;
-            all_books_array=[];
+            all_books_array = [];
 //traverse object
             var book_array = global_result.feed.entry;
             for (var i = 0; i < book_array.length - 2; i++) {
@@ -93,14 +93,14 @@ $(document).ready(function () {
                 var book_author = book_array[i]["im:artist"].label;
                 var book_summary = book_array[i].summary.label;
                 var book = new book_object(book_name, book_author, book_summary, book_image, array);
-                if(all_books_array.length<8){
+                if (all_books_array.length < 8) {
                     all_books_array.push(book);
                 }
 
             }
             $(row).empty();
-            for (var o = 0; o<all_books_array.length; o++){
-                appendbookobjecttoDOM(all_books_array[o],row1);
+            for (var o = 0; o < all_books_array.length; o++) {
+                appendbookobjecttoDOM(all_books_array[o], row1);
             }
         }
     });
@@ -133,7 +133,7 @@ $(document).ready(function () {
             success: function (result) {
                 console.log('AJAX Success function called, with the following result:', result);
                 global_result = result;
-                currentarray=[];
+                currentarray = [];
 //traverse object
                 var book_array = global_result.feed.entry;
                 for (var i = 0; i < book_array.length - 2; i++) {
@@ -143,13 +143,13 @@ $(document).ready(function () {
                     var book_author = book_array[i]["im:artist"].label;
                     var book_summary = book_array[i].summary.label;
                     var book = new book_object(book_name, book_author, book_summary, book_image, array);
-                    if(currentarray.length<8){
+                    if (currentarray.length < 8) {
                         currentarray.push(book);
                     }
                 }
                 $(row).empty();
-                for (var o = 0; o<currentarray.length; o++){
-                    appendbookobjecttoDOM(currentarray[o],row);
+                for (var o = 0; o < currentarray.length; o++) {
+                    appendbookobjecttoDOM(currentarray[o], row);
                 }
             }
         });
