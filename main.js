@@ -101,6 +101,36 @@ $(document).ready(function () {
 
 
 
+
+    //=============youtube search function with button====================//
+    $('#search').click(function () {
+//        var searchResult = document.getElementById('query').value;
+
+        var searchResult;
+    for (var i = 0; i < all_books_array.length; i++){
+            searchResult = all_books_array[i].title;
+        }
+        console.log( "This is the response", searchResult);
+        apis.youtube.getData(searchResult, '10', function (success, resp) {
+            videoId = resp;
+            console.log("before success call", resp.video[0]);
+            if (success) {
+                apis.youtube.playVideo(resp.video[0].id, 195, 320);
+                console.log("success called", resp);
+            }
+        });
+        {
+            console.log('YouTube', videoId[0], '195', 320);
+            setTimeout(function () {
+                apis.youtube.stopVideo()
+            }, 200000);
+
+            console.log("YouTube Failed");
+        }
+
+    });
+}); //end document ready function//
+
 function twitterUpdate(){
     $('.twitter_well > ul').text('');
     apis.twitter.getData('#booknerdproblems', function(success, response){
@@ -114,34 +144,4 @@ function twitterUpdate(){
         }
     })
 }
-
-
-
-
-    //=============youtube search function with button====================//
-    $('<a>').click(function () {
-        var searchResult = all_books_array[i];
-
-        apis.youtube.getData(searchResult, '10', function (success, resp) {
-            videoId = resp;
-            console.log("before success call", resp.video[0]);
-            if (success) {
-                apis.youtube.playVideo(resp.video[0].id, 195, 320);
-                console.log("success called", resp);
-            }
-        });
-        {
-
-            console.log('YouTube', videoId[1], '195', 320);
-            setTimeout(function () {
-                apis.youtube.stopVideo()
-            }, 200000);
-
-            console.log("YouTube Failed");
-        }
-
-
-    });
-}); //end document ready function//
-
 
