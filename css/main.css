@@ -1,4 +1,7 @@
 
+div.modal div.modal-backdrop {
+    z-index: 0;
+}
 .logo {
     margin: 0px 30px;
     width: 450px;
@@ -23,7 +26,6 @@
 body{
     overflow: hidden;
 }
-
 
 .col-md-2 h3 {
     font-size: 1em;
