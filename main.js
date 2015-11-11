@@ -3,7 +3,8 @@ var goodreads_secret = 'secret: 3fnOGoSE7vkY8s96FFeoppDlAiHXMGanqAORgCqwU8M';
 var global_result;
 var audiobook_result;
 var url = null;
-var row = '.row1';
+var row;
+var row1 = '.row1';
 var currentarray;
 var all_books_array = [];
 var romance_books_array = [];
@@ -35,9 +36,10 @@ function appendbookobjecttoDOM(book_object, currrow){
     $(div_tag).append(a_tag);
     $(currrow).append(div_tag);
     $(img_tag).attr('src', book_object.image).click(function(){
-        console.log(book_object.find())
+        youtubeSearch(book_object);
+        console.log(book_object.find());
     });
-    $('.book_name').html(book_object.title);
+    $('.book_name').html(book_object.author);
     $('p').html(book_object.author);
     console.log(all_books_array);
 }
@@ -51,7 +53,6 @@ function twitterUpdate(){
                 console.log('twitter ', response);
                 $('.twitter_well > ul').append(li);
             }
-
         }
     });
 }
@@ -81,6 +82,7 @@ $(document).ready(function () {
         success: function (result) {
             console.log('AJAX Success function called, with the following result:', result);
             global_result = result;
+            all_books_array=[];
 //traverse object
             var book_array = global_result.feed.entry;
             for (var i = 0; i < book_array.length - 2; i++) {
@@ -90,10 +92,14 @@ $(document).ready(function () {
                 var book_author = book_array[i]["im:artist"].label;
                 var book_summary = book_array[i].summary.label;
                 var book = new book_object(book_name, book_author, book_summary, book_image, array);
-                all_books_array.push(book);
+                if(all_books_array.length<8){
+                    all_books_array.push(book);
+                }
+
             }
+            $(row).empty();
             for (var o = 0; o<all_books_array.length; o++){
-                appendbookobjecttoDOM(all_books_array[o],row);
+                appendbookobjecttoDOM(all_books_array[o],row1);
             }
         }
     });
@@ -120,13 +126,13 @@ $(document).ready(function () {
                 currentarray = mystery_books_array;
                 break;
         }
-        $(row).empty();
         $.ajax({
             dataType: 'json',
             url: url,
             success: function (result) {
                 console.log('AJAX Success function called, with the following result:', result);
                 global_result = result;
+                currentarray=[];
 //traverse object
                 var book_array = global_result.feed.entry;
                 for (var i = 0; i < book_array.length - 2; i++) {
@@ -136,8 +142,11 @@ $(document).ready(function () {
                     var book_author = book_array[i]["im:artist"].label;
                     var book_summary = book_array[i].summary.label;
                     var book = new book_object(book_name, book_author, book_summary, book_image, array);
-                    currentarray.push(book);
+                    if(currentarray.length<8){
+                        currentarray.push(book);
+                    }
                 }
+                $(row).empty();
                 for (var o = 0; o<currentarray.length; o++){
                     appendbookobjecttoDOM(currentarray[o],row);
                 }
@@ -145,31 +154,33 @@ $(document).ready(function () {
         });
     });
 
-
     //=============youtube search function with button====================//
-    $('#search').click(function () {
-        var searchResult = document.getElementById('query').value;
 
-        apis.youtube.getData(searchResult, '10', function (success, resp) {
-            videoId = resp;
-            console.log("before success call", resp.video[0]);
-            if (success) {
-                apis.youtube.playVideo(resp.video[0].id, 195, 320);
-                console.log("success called", resp);
-            }
-        });
-        {
-
-            console.log('YouTube', videoId[1], '195', 320);
-            setTimeout(function () {
-                apis.youtube.stopVideo()
-            }, 200000);
-
-            console.log("YouTube Failed");
-        }
-
-
-    });
 }); //end document ready function//
 
 
+function youtubeSearch(book_object) {
+//        var searchResult = document.getElementById('query').value;
+
+    var searchResult;
+    searchResult = book_object.title;
+
+    console.log( "This is the response", searchResult);
+    apis.youtube.getData(searchResult, '10', function (success, resp) {
+
+        console.log("before success call", resp.video[0]);
+        if (success) {
+            apis.youtube.playVideo(resp.video[0].id, 195, 320);
+            console.log("success called", resp);
+        }
+    });
+    {
+//        console.log('YouTube', videoId[0], '195', 320);
+        setTimeout(function () {
+            apis.youtube.stopVideo()
+        }, 200000);
+
+        console.log("YouTube Failed");
+    }
+
+}
