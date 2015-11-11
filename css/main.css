@@ -1,11 +1,14 @@
 
+div.modal div.modal-backdrop {
+    z-index: 0;
+}
 .logo {
     margin: 0px 30px;
     width: 450px;
     display: inline-block;
 }
 .sub_logo{
-    width:150px;
+    width:100px;
 }
 .twitter_feed{
     text-align: center;
@@ -23,10 +26,67 @@
 body{
     overflow: hidden;
 }
+
 .col-md-2 h3 {
     font-size: 1em;
 }
-.col-md-2 img {
-    width: 100px;
+.audio_books{
+    width: 40%;
+    margin: 5px;
+}
+.second_animation_line, .third_animation_line, .fourth_animation_line, .fifth_animation_line, .sixth_animation_line{
+    display: none;
+}
+.first_animation_line img,.third_animation_line img{
+    width: 10%;
+}
+section h3{
+    color: white;
+}
 
+.col-md-8, #st-panel-2, #st-panel-3, #st-panel-4, #st-panel-5{
+    background-image:url('http://samandaemydesign.naruto-kun.hu/color/b1.jpg');
+}
+.col-md-8{
+    background-image:url('http://samandaemydesign.naruto-kun.hu/color/b1.jpg');
+    height: 700px
+}
+
+.workout_brain {
+    width: 150px;
+    display: inline-block;
+    -webkit-animation: workout 1s infinite;
+    -webkit-animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes workout {
+    0% {
+        -webkit-transform: rotateY(0deg);
+    }
+    6% {
+        -webkit-transform: rotateY(0deg);
+
+    }
+    10% {
+        -webkit-transform: rotateY(0deg);
+
+    }
+    27% {
+        -webkit-transform: rotateY(0deg);
+
+    }
+    28% {
+        -webkit-transform: rotateY(150deg);
+
+      }
+    40% {
+        -webkit-transform: rotateY(150deg);
+
+    }
+    70% {
+        -webkit-transform: rotateY(150deg);
+    }
+    100% {
+        -webkit-transform: rotateY(150deg);
+    }
 }

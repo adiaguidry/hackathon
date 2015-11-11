@@ -36,7 +36,6 @@ function appendbookobjecttoDOM(book_object, currrow) {
     $(div_tag).append(a_tag);
     $(currrow).append(div_tag);
     $(img_tag).attr('src', book_object.image).click(function(){
-        $('#player').text('');
         youtubeSearch(book_object);
         console.log(book_object.find());
     });
@@ -60,23 +59,65 @@ function twitterUpdate() {
         }
     });
 }
+//dancing brain lyrics
+function anmimate_workout(){
+    setTimeout(function () {
+        $('.first_animation_line').hide();
+    }, 4000);
+    setTimeout(function () {
+        $('.second_animation_line').show();
+    }, 4000);
+    setTimeout(function () {
+        $('.second_animation_line').hide();
+    }, 6000);
+    setTimeout(function () {
+        $('.third_animation_line').show();
+    }, 6000);
+    setTimeout(function () {
+        $('.third_animation_line').hide();
+    }, 8000);
+    setTimeout(function () {
+        $('.fourth_animation_line').show();
+    }, 8000);
+    setTimeout(function () {
+        $('.fourth_animation_line').hide();
+    }, 12000);
+    setTimeout(function () {
+        $('.fifth_animation_line').show();
+    }, 12000);
+    setTimeout(function () {
+        $('.fifth_animation_line').hide();
+    }, 16000);
+    setTimeout(function () {
+        $('.sixth_animation_line').show();
+    }, 16000);
+
+
+}
+
 $(document).ready(function () {
+
     twitterUpdate();
+    anmimate_workout();
     $.ajax({
         dataType: 'json',
         url: 'https://itunes.apple.com/us/rss/topaudiobooks/limit=10/json',
         success: function (result) {
-            console.log('111AJAX Success function called, with the following result:', result);
+            console.log('111AJAX Success function called, audiobooks:', result);
 //traverse object
             audiobook_result = result;
             var audiobook_array = audiobook_result.feed.entry;
             for (var i = 0; i < audiobook_array.length - 2; i++) {
                 var audiobook_image = audiobook_result.feed.entry[i]["im:image"][2].label;
-                var audiobook_name = audiobook_array[i]["im:name"].label;
+                var audiobook_link = audiobook_result.feed.entry[i].link[1].attributes.href;
                 var audiobook_author = audiobook_array[i]["im:artist"].label;
                 //var audiobook_summary = book_array[i].summary.label;
-                var img_tag = $('<img>').attr('src', audiobook_image).css('width', '100px');
-                $('.audiobooks').append(img_tag);
+                var a_tag = $('<a>').attr('href', audiobook_link);
+                var icon_tag = $('<i>').addClass('fa fa-info fa-lg info');
+                var img_tag = $('<img>').attr('src', audiobook_image).addClass('audio_books');
+                $(a_tag).append(icon_tag);
+                $('.audiobooks').append(img_tag, a_tag);
+                console.log('111AJAX Success function called, audiobooks:', result, audiobook_link);
             }
         }
     });
