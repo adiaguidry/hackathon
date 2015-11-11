@@ -34,10 +34,11 @@ function appendbookobjecttoDOM(book_object, currrow) {
     $(div_tag).append(h3_tag);
     $(div_tag).append(a_tag);
     $(currrow).append(div_tag);
-    $(img_tag).attr('src', book_object.image).click(function () {
-        console.log(book_object.find())
+    $(img_tag).attr('src', book_object.image).click(function(){
+        youtubeSearch(book_object);
+        console.log(book_object.find());
     });
-    $('.book_name').html(book_object.title);
+    $('.book_name').html(book_object.author);
     $('p').html(book_object.author);
     console.log(all_books_array);
 }
@@ -151,31 +152,33 @@ $(document).ready(function () {
         });
     });
 
-
     //=============youtube search function with button====================//
-    $('#search').click(function () {
-        var searchResult = document.getElementById('query').value;
 
-        apis.youtube.getData(searchResult, '10', function (success, resp) {
-            videoId = resp;
-            console.log("before success call", resp.video[0]);
-            if (success) {
-                apis.youtube.playVideo(resp.video[0].id, 195, 320);
-                console.log("success called", resp);
-            }
-        });
-        {
-
-            console.log('YouTube', videoId[1], '195', 320);
-            setTimeout(function () {
-                apis.youtube.stopVideo()
-            }, 200000);
-
-            console.log("YouTube Failed");
-        }
-
-
-    });
 }); //end document ready function//
 
 
+function youtubeSearch(book_object) {
+//        var searchResult = document.getElementById('query').value;
+
+    var searchResult;
+    searchResult = book_object.title;
+
+    console.log( "This is the response", searchResult);
+    apis.youtube.getData(searchResult, '10', function (success, resp) {
+
+        console.log("before success call", resp.video[0]);
+        if (success) {
+            apis.youtube.playVideo(resp.video[0].id, 195, 320);
+            console.log("success called", resp);
+        }
+    });
+    {
+//        console.log('YouTube', videoId[0], '195', 320);
+        setTimeout(function () {
+            apis.youtube.stopVideo()
+        }, 200000);
+
+        console.log("YouTube Failed");
+    }
+
+}
