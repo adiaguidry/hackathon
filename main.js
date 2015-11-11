@@ -1,6 +1,7 @@
 var goodreads_key = 'key: orU88aqllNy1ZoJLTTH9Q';
 var goodreads_secret = 'secret: 3fnOGoSE7vkY8s96FFeoppDlAiHXMGanqAORgCqwU8M';
 var global_result;
+var audiobook_result;
 var url = null;
 var row = null;
 var book_object = function (title, author, summary) {
@@ -11,8 +12,38 @@ var book_object = function (title, author, summary) {
 };
 var all_books_array = [];
 
-
+function twitterUpdate() {
+    $('.twitter_well > ul').text('');
+    apis.twitter.getData('#booknerdproblems', function (success, response) {
+        if (success) {
+            for (var i = 0; i < response.tweets.statuses.length - 12; i++) {
+                var tweets = response.tweets.statuses[i].text;
+                var li = $('<li>').text(tweets).addClass("tweets");
+                $('.twitter_well > ul').append(li);
+            }
+        }
+    })
+}
 $(document).ready(function () {
+    $.ajax({
+        dataType: 'json',
+        url: 'https://itunes.apple.com/us/rss/topaudiobooks/limit=10/json',
+        success: function (result) {
+            console.log('111AJAX Success function called, with the following result:', result);
+//traverse object
+             audiobook_result = result;
+            var audiobook_array = audiobook_result.feed.entry;
+            for (var i = 0; i < audiobook_array.length - 2; i++) {
+                var audiobook_image = audiobook_result.feed.entry[i]["im:image"][2].label;
+                var audiobook_name = audiobook_array[i]["im:name"].label;
+                var audiobook_author = audiobook_array[i]["im:artist"].label;
+                //var audiobook_summary = book_array[i].summary.label;
+                var img_tag = $('<img>').attr('src', audiobook_image).css('width','100px');
+                $('.audiobooks').append(img_tag);
+            }
+        }
+    });
+
     $.ajax({
         dataType: 'json',
         url: 'https://itunes.apple.com/us/rss/toppaidebooks/limit=10/json',
@@ -63,7 +94,6 @@ $(document).ready(function () {
                 row = '.row5';
                 break;
         }
-
         $(row).empty();
         $.ajax({
             dataType: 'json',
@@ -98,24 +128,6 @@ $(document).ready(function () {
             }
         });
     });
-
-
-
-function twitterUpdate(){
-    $('.twitter_well > ul').text('');
-    apis.twitter.getData('#booknerdproblems', function(success, response){
-        if(success){
-            for(var i=0; i<response.tweets.statuses.length -12; i++){
-                var tweets = response.tweets.statuses[i].text;
-                var li = $('<li>').text(tweets).addClass("tweets");
-                $('.twitter_well > ul').append(li);
-            }
-
-        }
-    })
-}
-
-
 
 
     //=============youtube search function with button====================//
