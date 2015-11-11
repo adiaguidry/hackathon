@@ -157,7 +157,7 @@ $(document).ready(function () {
                 currentarray = romance_books_array;
                 break;
             case "st-control-3":
-                url = 'https://itunes.apple.com/us/rss/toppaidebooks/limit=10/genre=9028/json';
+                url = 'https://itunes.apple.com/us/rss/toppaidebooks/limit=10/genre=9025/json';
                 row = '.row3';
                 currentarray = health_books_array;
                 break;
