@@ -36,6 +36,7 @@ function appendbookobjecttoDOM(book_object, currrow){
     $(div_tag).append(a_tag);
     $(currrow).append(div_tag);
     $(img_tag).attr('src', book_object.image).click(function(){
+        $('#player').text('');
         youtubeSearch(book_object);
         console.log(book_object.find());
     });
@@ -172,6 +173,7 @@ function youtubeSearch(book_object) {
         if (success) {
             apis.youtube.playVideo(resp.video[0].id, 195, 320);
             console.log("success called", resp);
+            searchResult = '';
         }
     });
     {
