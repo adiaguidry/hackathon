@@ -3,7 +3,8 @@ var goodreads_secret = 'secret: 3fnOGoSE7vkY8s96FFeoppDlAiHXMGanqAORgCqwU8M';
 var global_result;
 var audiobook_result;
 var url = null;
-var row = '.row1';
+var row;
+var row1 = '.row1';
 var currentarray;
 var all_books_array = [];
 var romance_books_array = [];
@@ -49,7 +50,6 @@ function twitterUpdate(){
                 var li = $('<li>').text(tweets).addClass("tweets");
                 $('.twitter_well > ul').append(li);
             }
-
         }
     });
 }
@@ -79,6 +79,7 @@ $(document).ready(function () {
         success: function (result) {
             console.log('AJAX Success function called, with the following result:', result);
             global_result = result;
+            all_books_array=[];
 //traverse object
             var book_array = global_result.feed.entry;
             for (var i = 0; i < book_array.length - 2; i++) {
@@ -88,10 +89,14 @@ $(document).ready(function () {
                 var book_author = book_array[i]["im:artist"].label;
                 var book_summary = book_array[i].summary.label;
                 var book = new book_object(book_name, book_author, book_summary, book_image, array);
-                all_books_array.push(book);
+                if(all_books_array.length<8){
+                    all_books_array.push(book);
+                }
+
             }
+            $(row).empty();
             for (var o = 0; o<all_books_array.length; o++){
-                appendbookobjecttoDOM(all_books_array[o],row);
+                appendbookobjecttoDOM(all_books_array[o],row1);
             }
         }
     });
@@ -118,13 +123,13 @@ $(document).ready(function () {
                 currentarray = passion_books_array;
                 break;
         }
-        $(row).empty();
         $.ajax({
             dataType: 'json',
             url: url,
             success: function (result) {
                 console.log('AJAX Success function called, with the following result:', result);
                 global_result = result;
+                currentarray=[];
 //traverse object
                 var book_array = global_result.feed.entry;
                 for (var i = 0; i < book_array.length - 2; i++) {
@@ -134,8 +139,11 @@ $(document).ready(function () {
                     var book_author = book_array[i]["im:artist"].label;
                     var book_summary = book_array[i].summary.label;
                     var book = new book_object(book_name, book_author, book_summary, book_image, array);
-                    currentarray.push(book);
+                    if(currentarray.length<8){
+                        currentarray.push(book);
+                    }
                 }
+                $(row).empty();
                 for (var o = 0; o<currentarray.length; o++){
                     appendbookobjecttoDOM(currentarray[o],row);
                 }
