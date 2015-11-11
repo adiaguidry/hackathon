@@ -23,10 +23,13 @@
 body{
     overflow: hidden;
 }
-.col-md-2 h3 {
-    font-size: 1em;
+
+.col-md-2 h5 {
+    width: 175%;
 }
+
+
 .col-md-2 img {
     width: 100px;
-
+    height: 150px;
 }

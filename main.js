@@ -28,15 +28,15 @@ var book_object = function (title, author, summary, image, myarr) {
 function appendbookobjecttoDOM(book_object, currrow) {
     var img_tag = $('<img>');
     var a_tag = $('<a>');
-    var h3_tag = $('<h3>').text(book_object.title);
+    var h5_tag = $('<h5>').text(book_object.title);
     var div_tag = $('<div>').addClass('col-md-offset-1 col-md-2');
     $(a_tag).append(img_tag);
-    $(h3_tag).append(a_tag);
-    $(div_tag).append(h3_tag);
+    $(h5_tag).append(a_tag);
+    $(div_tag).append(h5_tag);
     $(div_tag).append(a_tag);
     $(currrow).append(div_tag);
     $(img_tag).attr('src', book_object.image).click(function(){
-        $('#player').text('');
+        searchResult = '';
         youtubeSearch(book_object);
         console.log(book_object.find());
     });
@@ -71,7 +71,7 @@ $(document).ready(function () {
                 var audiobook_name = audiobook_array[i]["im:name"].label;
                 var audiobook_author = audiobook_array[i]["im:artist"].label;
                 //var audiobook_summary = book_array[i].summary.label;
-                var img_tag = $('<img>').attr('src', audiobook_image).css('width', '100px');
+                var img_tag = $('<img>').attr('src', audiobook_image).css('width', '90px');
                 $('.audiobooks').append(img_tag);
             }
         }
@@ -173,7 +173,7 @@ function youtubeSearch(book_object) {
         if (success) {
             apis.youtube.playVideo(resp.video[0].id, 195, 320);
             console.log("success called", resp);
-            searchResult = '';
+
         }
     });
     {
