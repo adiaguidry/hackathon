@@ -5,7 +5,7 @@
     display: inline-block;
 }
 .sub_logo{
-    width:150px;
+    width:100px;
 }
 .twitter_feed{
     text-align: center;
@@ -37,6 +37,17 @@ body{
 }
 .first_animation_line img,.third_animation_line img{
     width: 10%;
+}
+section h3{
+    color: white;
+}
+
+.col-md-8, #st-panel-2, #st-panel-3, #st-panel-4, #st-panel-5{
+    background-image:url('http://samandaemydesign.naruto-kun.hu/color/b1.jpg');
+}
+.col-md-8{
+    background-image:url('http://samandaemydesign.naruto-kun.hu/color/b1.jpg');
+    height: 700px
 }
 
 .workout_brain {

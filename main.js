@@ -56,7 +56,7 @@ function twitterUpdate() {
         }
     });
 }
-
+//dancing brain lyrics
 function anmimate_workout(){
     setTimeout(function () {
         $('.first_animation_line').hide();
