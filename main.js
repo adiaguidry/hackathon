@@ -52,9 +52,13 @@ function twitterUpdate() {
                 $('.twitter_well > ul').append(li);
             }
         }
+        else {
+            console.log('error - success = false')
+        }
     });
 }
 $(document).ready(function () {
+    twitterUpdate();
     $.ajax({
         dataType: 'json',
         url: 'https://itunes.apple.com/us/rss/topaudiobooks/limit=10/json',
