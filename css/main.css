@@ -4,6 +4,9 @@
     width: 450px;
     display: inline-block;
 }
+.sub_logo{
+    width:150px;
+}
 .twitter_feed{
     text-align: center;
 }
