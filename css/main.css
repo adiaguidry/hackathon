@@ -9,6 +9,11 @@ div.modal div.modal-backdrop {
 }
 .sub_logo{
     width:100px;
+    display: inline-block;
+    float: left;
+}
+.title_category{
+    color: #fff;
 }
 .twitter_feed{
     text-align: center;
@@ -35,6 +40,16 @@ body{
     width: 35%;
     margin: 4px;
 }
+.book:hover img{
+    box-shadow: 10px 10px 10px #000;
+
+}
+
+.book img{
+    border: solid #D8D8D8;
+    border-width: 0 4px 1px 0;
+}
+
 .audio_books img {
     margin: 1px;
 }

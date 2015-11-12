@@ -54,7 +54,7 @@ function appendbookobjecttoDOM(book_object, currrow) {
     var img_tag = $('<img>');
     var a_tag = $('<a>');
     var h5_tag = $('<h5>').text(book_object.author);
-    var div_tag = $('<div>').addClass('col-md-offset-1 col-md-2');
+    var div_tag = $('<div>').addClass('col-md-offset-1 col-md-2 book');
     $(a_tag).append(img_tag);
     $(h5_tag).append(a_tag);
     $(div_tag).append(h5_tag);
