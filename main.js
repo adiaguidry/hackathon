@@ -61,7 +61,7 @@ function appendbookobjecttoDOM(book_object, currrow) {
     $(div_tag).append(a_tag);
     $(currrow).append(div_tag);
     $(img_tag).attr('src', book_object.image).click(function(){
-        youtubeSearch(book_object); 
+        youtubeSearch(book_object);
         $('#bookModal').modal('show');
         $('.modal-title').text(book_object.title);
         $('.modal-body').text(book_object.summary);
