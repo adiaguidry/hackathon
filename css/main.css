@@ -28,7 +28,8 @@ body{
 }
 
 .col-md-2 h3 {
-    font-size: 1em;
+    width: 175%;
+    color: white;
 }
 .audio_books{
     width: 40%;
@@ -40,8 +41,8 @@ body{
 .first_animation_line img,.third_animation_line img{
     width: 10%;
 }
-section h3{
-    color: white;
+section h5{
+
 }
 
 .col-md-8, #st-panel-2, #st-panel-3, #st-panel-4, #st-panel-5{

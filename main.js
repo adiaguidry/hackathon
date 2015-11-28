@@ -28,7 +28,7 @@ var book_object = function (title, author, summary, image, myarr) {
 function appendbookobjecttoDOM(book_object, currrow) {
     var img_tag = $('<img>');
     var a_tag = $('<a>');
-    var h3_tag = $('<h3>').text(book_object.title);
+    var h3_tag = $('<h3>').text(book_object.author);
     var div_tag = $('<div>').addClass('col-md-offset-1 col-md-2');
     $(a_tag).append(img_tag);
     $(h3_tag).append(a_tag);
@@ -36,12 +36,17 @@ function appendbookobjecttoDOM(book_object, currrow) {
     $(div_tag).append(a_tag);
     $(currrow).append(div_tag);
     $(img_tag).attr('src', book_object.image).click(function(){
+       // var appendPlayer = $('<div>').attr('id', 'player');
+       // $('.modal-body').append(appendPlayer);
+
         youtubeSearch(book_object);
         console.log(book_object.find());
+
     });
     $('.book_name').html(book_object.author);
-    $('p').html(book_object.author);
+    $('p').html(book_object.summary);
     console.log(all_books_array);
+
 }
 function twitterUpdate() {
     $('.twitter_well > ul').text('');
@@ -206,26 +211,38 @@ $(document).ready(function () {
 function youtubeSearch(book_object) {
 //        var searchResult = document.getElementById('query').value;
 
+    $('#myModal').modal('show');
     var searchResult;
-    searchResult = book_object.title;
+    searchResult = book_object.author + " " + book_object.title;
 
     console.log( "This is the response", searchResult);
     apis.youtube.getData(searchResult, '10', function (success, resp) {
 
         console.log("before success call", resp.video[0]);
         if (success) {
-            apis.youtube.playVideo(resp.video[0].id, 195, 320);
+            var vid = resp.video[0].id;
+            console.log("Video ID,", vid);
+            apis.youtube.playVideo(vid, 390, 540);
             console.log("success called", resp);
-            searchResult = '';
+            //searchResult = '';
+
         }
     });
-    {
-//        console.log('YouTube', videoId[0], '195', 320);
-        setTimeout(function () {
-            apis.youtube.stopVideo()
-        }, 200000);
-
-        console.log("YouTube Failed");
-    }
+//    {
+////        console.log('YouTube', videoId[0], '195', 320);
+//        setTimeout(function () {
+//            apis.youtube.stopVideo()
+//        }, 2000);
+//
+//        console.log("YouTube Failed");
+//    }
+//   onYouTubeIframeAPIReady(book_object.author, book_object.title);
 
 }
+
+//function clearIframe(){
+  //  $('#player').hide();
+
+//}
+
+
